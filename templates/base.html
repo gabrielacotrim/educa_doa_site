@@ -1,0 +1,58 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{% block title %}EducaDoa{% endblock %}</title>
+  <link rel="stylesheet" href="{% static 'style.css' %}">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+  <header class="navbar">
+    <a href="{% url 'home' %}" class="logo" style="text-decoration:none">
+      <i class="fas fa-book-open"></i>
+      <span><strong>Educa</strong>Doa</span>
+    </a>
+    <nav>
+      <a href="{% url 'home' %}">Início</a>
+      <a href="{% url 'escolas' %}">Escolas</a>
+      {% if user.is_authenticated %}
+          {% if user.is_escola %}
+            <a href="{% url 'dashboard_escola' %}" class="btn-nav-escola">Meu Painel (Escola)</a>
+          {% else %}
+            <a href="{% url 'dashboard_doador' %}" class="btn-nav-login">Meu Painel (Doador)</a>
+          {% endif %}
+          <a href="{% url 'logout' %}">Sair</a>
+      {% else %}
+          <a href="{% url 'login_doador' %}" class="btn-nav-login">Sou Doador</a>
+          <a href="{% url 'login_escola' %}" class="btn-nav-escola">Sou Escola</a>
+      {% endif %}
+    </nav>
+  </header>
+
+  <main>
+    {% if messages %}
+      <div style="margin: 20px;">
+      {% for message in messages %}
+        <div style="padding: 10px; background: #e2f0d9; border-radius: 4px; margin-bottom: 5px;">{{ message }}</div>
+      {% endfor %}
+      </div>
+    {% endif %}
+
+    {% block content %}
+    {% endblock %}
+  </main>
+
+  <footer class="main-footer">
+    <div class="footer-content">
+      <p class="footer-brand"><i class="fas fa-book-open"></i> EducaDoa</p>
+      <span class="footer-divider">|</span>
+      <p>© 2026 EducaDoa — Maceió, AL</p>
+    </div>
+  </footer>
+
+</body>
+</html>

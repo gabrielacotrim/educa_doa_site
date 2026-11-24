@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}{{ escola.nome_escola }} - EducaDoa{% endblock %}
+{% block content %}
+<section class="featured-schools" style="min-height: 70vh;">
+  <h2>{{ escola.nome_escola }}</h2>
+  <p class="school-location" style="text-align:center; margin-bottom:2rem;"><i class="fas fa-map-marker-alt"></i> {{ escola.cidade }} - {{ escola.estado }}</p>
+
+  <h3 style="text-align:center;">Campanhas e Necessidades Ativas</h3>
+  <div class="schools-grid" style="margin-top: 2rem;">
+    {% for necessidade in escola.necessidades.all %}
+    <div class="school-card">
+      {% if necessidade.imagem %}
+      <img src="{{ necessidade.imagem.url }}" alt="{{ necessidade.titulo }}" style="width:100%; height:150px; object-fit:cover; border-radius: 8px 8px 0 0;">
+      {% endif %}
+      <div class="school-card-body">
+        <h3 style="margin-bottom: 10px;">{{ necessidade.titulo }}</h3>
+        <p class="school-need">{{ necessidade.descricao }}</p>
+        <p class="school-amount">
+          Meta: <strong>R$ {{ necessidade.valor_meta }}</strong><br>
+          Arrecadado: <strong>R$ {{ necessidade.valor_arrecadado }}</strong>
+        </p>
+        <div class="progress-bar">
+          <div class="progress-fill" style="width: {{ necessidade.percentual_arrecadado }}%"></div>
+        </div>
+        <p style="font-size: 0.9em; text-align:right;">{{ necessidade.percentual_arrecadado }}%</p>
+        <a href="{% url 'realizar_doacao' necessidade.pk %}" class="btn-doar-escola">
+          <i class="fas fa-hand-holding-heart"></i> Fazer Doação
+        </a>
+      </div>
+    </div>
+    {% empty %}
+    <div class="school-card" style="grid-column: span 3; text-align: center;">
+      <p style="padding:40px;">Esta escola ainda não tem nenhuma necessidade registrada no momento.</p>
+    </div>
+    {% endfor %}
+  </div>
+</section>
+{% endblock %}

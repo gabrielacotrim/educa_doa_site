@@ -1,0 +1,843 @@
+/* GOOGLE FONTS */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+
+/* RESET */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Inter', Arial, Helvetica, sans-serif;
+}
+
+body {
+  background: #f0f4f3;
+  color: #333;
+  line-height: 1.6;
+}
+
+a {
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+/* NAVBAR */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 14px 5%;
+  background: #fff;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 22px;
+  color: #2e7d32;
+  cursor: pointer;
+}
+
+.logo i {
+  font-size: 24px;
+}
+
+nav {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+nav a {
+  text-decoration: none;
+  color: #555;
+  font-weight: 500;
+  font-size: 15px;
+  position: relative;
+  padding-bottom: 2px;
+  transition: color 0.3s ease;
+}
+
+nav a:not(.btn-donate):not(.btn-nav-escola):not(.btn-nav-login):hover {
+  color: #2e7d32;
+}
+
+nav a:not(.btn-donate):not(.btn-nav-escola):not(.btn-nav-login)::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 0%;
+  height: 2px;
+  background: #2e7d32;
+  transition: width 0.3s ease;
+}
+
+nav a:not(.btn-donate):not(.btn-nav-escola):not(.btn-nav-login):hover::after {
+  width: 100%;
+}
+
+/* BOTÕES DA NAVBAR */
+.btn-donate {
+  background: #2e7d32;
+  color: white !important;
+  padding: 9px 22px;
+  border-radius: 25px;
+  font-weight: 600;
+  font-size: 14px;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 8px rgba(46, 125, 50, 0.3);
+}
+
+.btn-donate:hover {
+  background: #1b5e20;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(46, 125, 50, 0.4);
+}
+
+.btn-nav-escola {
+  border: 2px solid #2e7d32;
+  padding: 7px 18px;
+  border-radius: 25px;
+  color: #2e7d32 !important;
+  font-weight: 600;
+  font-size: 14px;
+  transition: all 0.3s ease;
+}
+
+.btn-nav-escola:hover {
+  background: #2e7d32;
+  color: white !important;
+  transform: translateY(-1px);
+}
+
+.btn-nav-login {
+  color: #2e7d32 !important;
+  font-weight: 600;
+  font-size: 14px;
+  padding: 7px 18px;
+  border: 2px solid transparent;
+  border-radius: 25px;
+  transition: all 0.3s ease;
+}
+
+.btn-nav-login:hover {
+  border-color: #2e7d32;
+  background: rgba(46, 125, 50, 0.05);
+}
+
+/* HERO */
+.hero {
+  background: linear-gradient(135deg, #1a472a 0%, #2e7d32 50%, #388e3c 100%);
+  color: white;
+  padding: 100px 20px 80px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.hero::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 100%;
+  height: 60px;
+  background: #f0f4f3;
+  clip-path: ellipse(55% 100% at 50% 100%);
+}
+
+.hero-content {
+  position: relative;
+  z-index: 1;
+}
+
+.hero h1 {
+  font-size: 42px;
+  margin-bottom: 16px;
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+.highlight {
+  color: #ff6b6b;
+  position: relative;
+}
+
+.hero p {
+  max-width: 560px;
+  margin: 0 auto 35px;
+  font-size: 17px;
+  opacity: 0.92;
+  line-height: 1.7;
+}
+
+.hero-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 16px;
+  flex-wrap: wrap;
+  margin-bottom: 50px;
+}
+
+.btn-hero-primary {
+  background: #ff6b6b;
+  padding: 14px 32px;
+  border-radius: 30px;
+  color: white;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 16px;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(255, 107, 107, 0.4);
+}
+
+.btn-hero-primary:hover {
+  background: #e05555;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(255, 107, 107, 0.5);
+}
+
+.btn-hero-secondary {
+  border: 2px solid rgba(255, 255, 255, 0.8);
+  padding: 14px 32px;
+  border-radius: 30px;
+  color: white;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 16px;
+  transition: all 0.3s ease;
+}
+
+.btn-hero-secondary:hover {
+  background: rgba(255, 255, 255, 0.15);
+  border-color: white;
+  transform: translateY(-2px);
+}
+
+/* HERO STATS */
+.hero-stats {
+  display: flex;
+  justify-content: center;
+  gap: 50px;
+  flex-wrap: wrap;
+}
+
+.hero-stats div {
+  text-align: center;
+  padding: 12px 20px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+  min-width: 120px;
+  backdrop-filter: blur(5px);
+}
+
+.hero-stats strong {
+  font-size: 28px;
+  display: block;
+}
+
+.hero-stats p {
+  font-size: 14px;
+  margin: 0;
+  opacity: 0.85;
+}
+
+/* SECTIONS */
+section {
+  padding: 80px 5%;
+}
+
+section > h2 {
+  text-align: center;
+  font-size: 30px;
+  margin-bottom: 12px;
+  color: #1a1a2e;
+  font-weight: 700;
+}
+
+section > p {
+  text-align: center;
+  color: #666;
+  max-width: 600px;
+  margin: 0 auto 40px;
+}
+
+/* COMO FUNCIONA */
+.how-it-works > h2 {
+  text-align: center;
+  margin-bottom: 50px;
+}
+
+.steps-grid {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 30px;
+  counter-reset: step-counter;
+}
+
+.step-card {
+  background: white;
+  padding: 35px 28px 30px;
+  border-radius: 16px;
+  max-width: 280px;
+  text-align: center;
+  box-shadow: 0 5px 25px rgba(0, 0, 0, 0.06);
+  transition: all 0.3s ease;
+  position: relative;
+  counter-increment: step-counter;
+  border: 1px solid rgba(0, 0, 0, 0.04);
+}
+
+.step-card::before {
+  content: counter(step-counter);
+  position: absolute;
+  top: -16px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 32px;
+  height: 32px;
+  background: #2e7d32;
+  color: white;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.step-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 35px rgba(0, 0, 0, 0.1);
+}
+
+.step-card i {
+  font-size: 32px;
+  color: #2e7d32;
+  margin-bottom: 16px;
+  display: block;
+}
+
+.step-card h3 {
+  margin-bottom: 10px;
+  font-size: 18px;
+  color: #1a1a2e;
+}
+
+.step-card p {
+  color: #666;
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+/* ESCOLAS EM DESTAQUE */
+.featured-schools > h2 {
+  text-align: center;
+  margin-bottom: 50px;
+}
+
+.schools-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 25px;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.school-card {
+  background: white;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 5px 25px rgba(0, 0, 0, 0.06);
+  transition: all 0.3s ease;
+  border: 1px solid rgba(0, 0, 0, 0.04);
+}
+
+.school-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 35px rgba(0, 0, 0, 0.1);
+}
+
+.school-card-header {
+  background: linear-gradient(135deg, #1a472a, #2e7d32);
+  color: white;
+  padding: 20px;
+  text-align: center;
+}
+
+.school-card-header h3 {
+  font-size: 17px;
+  font-weight: 600;
+}
+
+.school-card-body {
+  padding: 22px;
+}
+
+.school-location {
+  font-size: 13px;
+  color: #888;
+  margin-bottom: 8px;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.school-need {
+  font-size: 14px;
+  color: #555;
+  margin-bottom: 14px;
+  line-height: 1.5;
+}
+
+.school-amount {
+  font-size: 15px;
+  color: #333;
+  margin-bottom: 14px;
+}
+
+.school-amount strong {
+  color: #2e7d32;
+  font-size: 18px;
+}
+
+.progress-bar {
+  height: 8px;
+  background: #e8f5e9;
+  border-radius: 10px;
+  overflow: hidden;
+  margin-bottom: 18px;
+}
+
+.progress-fill {
+  height: 100%;
+  background: linear-gradient(90deg, #2e7d32, #66bb6a);
+  border-radius: 10px;
+}
+
+.btn-doar-escola {
+  display: block;
+  text-align: center;
+  background: #2e7d32;
+  color: white;
+  padding: 11px 20px;
+  border-radius: 10px;
+  font-weight: 600;
+  font-size: 14px;
+  transition: all 0.3s ease;
+  text-decoration: none;
+}
+
+.btn-doar-escola:hover {
+  background: #1b5e20;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(46, 125, 50, 0.3);
+}
+
+/* IMPACTO */
+.impact-section {
+  background: linear-gradient(135deg, #1a472a, #2e7d32);
+  color: white;
+  text-align: center;
+}
+
+.impact-section h2 {
+  color: white;
+}
+
+.counters-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 30px;
+  text-align: center;
+  max-width: 900px;
+  margin: 40px auto 0;
+}
+
+.counters-grid > div {
+  padding: 25px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 16px;
+  backdrop-filter: blur(5px);
+  transition: all 0.3s ease;
+}
+
+.counters-grid > div:hover {
+  background: rgba(255, 255, 255, 0.18);
+  transform: translateY(-3px);
+}
+
+.counters-grid strong {
+  font-size: 36px;
+  display: block;
+  margin-bottom: 5px;
+}
+
+.counters-grid p {
+  font-size: 15px;
+  opacity: 0.85;
+}
+
+/* CTA */
+.cta-section {
+  background: linear-gradient(135deg, #f8faf8, #e8f5e9);
+  text-align: center;
+  padding: 80px 5%;
+}
+
+.cta-section h2 {
+  font-size: 30px;
+  color: #1a1a2e;
+  margin-bottom: 12px;
+}
+
+.cta-section p {
+  color: #666;
+  font-size: 17px;
+  margin-bottom: 30px;
+}
+
+.btn-cta-primary {
+  display: inline-block;
+  background: #2e7d32;
+  color: white;
+  padding: 14px 40px;
+  border-radius: 30px;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 16px;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(46, 125, 50, 0.3);
+}
+
+.btn-cta-primary:hover {
+  background: #1b5e20;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(46, 125, 50, 0.4);
+}
+
+/* FOOTER */
+.main-footer {
+  background: #1a1a2e;
+  color: white;
+  padding: 40px 5%;
+  text-align: center;
+}
+
+.footer-content {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 30px;
+  flex-wrap: wrap;
+}
+
+.footer-content p {
+  font-size: 14px;
+  color: #aaa;
+}
+
+.footer-content .footer-brand {
+  color: white;
+  font-weight: 600;
+  font-size: 15px;
+}
+
+.footer-divider {
+  color: #444;
+}
+
+.main-footer a {
+  color: #aaa;
+  transition: color 0.3s ease;
+}
+
+.main-footer a:hover {
+  color: #66bb6a;
+}
+
+/* FORMULÁRIOS (LOGIN E CADASTRO) */
+.escola-login-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: calc(100vh - 58px);
+  padding: 40px 20px;
+  background: linear-gradient(135deg, #f0f4f3, #e8f5e9);
+}
+
+.doador-login-container {
+  background: linear-gradient(135deg, #f0f4f3, #fce4ec);
+}
+
+.escola-login-card {
+  background: white;
+  padding: 40px 36px;
+  border-radius: 20px;
+  width: 100%;
+  max-width: 440px;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08);
+  border: 1px solid rgba(0, 0, 0, 0.04);
+}
+
+.escola-card-header {
+  text-align: center;
+  margin-bottom: 28px;
+}
+
+.escola-card-header h2 {
+  font-size: 24px;
+  font-weight: 700;
+  color: #1a1a2e;
+  margin-bottom: 6px;
+}
+
+.escola-card-header > p {
+  color: #777;
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+.escola-icon-wrap {
+  width: 72px;
+  height: 72px;
+  background: linear-gradient(135deg, #1a472a, #2e7d32);
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  margin: 0 auto 14px;
+  font-size: 28px;
+  box-shadow: 0 4px 15px rgba(46, 125, 50, 0.3);
+}
+
+.doador-icon-wrap {
+  background: linear-gradient(135deg, #c62828, #e53935);
+  box-shadow: 0 4px 15px rgba(198, 40, 40, 0.3);
+}
+
+.escola-form h3 {
+  margin-bottom: 6px;
+  font-size: 18px;
+  color: #1a1a2e;
+}
+
+.subtitle {
+  color: #888;
+  margin-bottom: 22px;
+  font-size: 14px;
+}
+
+.input-group {
+  margin-bottom: 18px;
+}
+
+.input-group label {
+  display: block;
+  margin-bottom: 6px;
+  font-size: 14px;
+  font-weight: 500;
+  color: #444;
+}
+
+.input-wrapper {
+  display: flex;
+  align-items: center;
+  border: 2px solid #e0e0e0;
+  padding: 11px 14px;
+  border-radius: 10px;
+  transition: all 0.3s ease;
+  background: #fafafa;
+}
+
+.input-wrapper:focus-within {
+  border-color: #2e7d32;
+  box-shadow: 0 0 0 3px rgba(46, 125, 50, 0.12);
+  background: white;
+}
+
+.doador-login-container .input-wrapper:focus-within {
+  border-color: #e53935;
+  box-shadow: 0 0 0 3px rgba(229, 57, 53, 0.12);
+}
+
+.input-wrapper i {
+  margin-right: 10px;
+  color: #999;
+  font-size: 15px;
+  transition: color 0.3s ease;
+}
+
+.input-wrapper:focus-within i {
+  color: #2e7d32;
+}
+
+.doador-login-container .input-wrapper:focus-within i {
+  color: #e53935;
+}
+
+.input-wrapper input {
+  border: none;
+  outline: none;
+  width: 100%;
+  font-size: 15px;
+  font-family: 'Inter', sans-serif;
+  background: transparent;
+  color: #333;
+}
+
+.input-wrapper input::placeholder {
+  color: #bbb;
+}
+
+.form-options {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 13px;
+  margin-bottom: 22px;
+  color: #666;
+}
+
+.form-options label {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  cursor: pointer;
+}
+
+.form-options input[type="checkbox"] {
+  accent-color: #2e7d32;
+  width: 16px;
+  height: 16px;
+}
+
+.form-options a {
+  color: #2e7d32;
+  font-weight: 500;
+}
+
+.form-options a:hover {
+  text-decoration: underline;
+}
+
+.btn-escola-submit {
+  width: 100%;
+  padding: 13px;
+  border: none;
+  background: linear-gradient(135deg, #1a472a, #2e7d32);
+  color: white;
+  border-radius: 10px;
+  cursor: pointer;
+  font-size: 15px;
+  font-weight: 600;
+  font-family: 'Inter', sans-serif;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(46, 125, 50, 0.25);
+}
+
+.btn-escola-submit:hover {
+  background: linear-gradient(135deg, #14351f, #1b5e20);
+  transform: translateY(-1px);
+  box-shadow: 0 6px 20px rgba(46, 125, 50, 0.35);
+}
+
+.doador-submit {
+  background: linear-gradient(135deg, #b71c1c, #e53935);
+  box-shadow: 0 4px 15px rgba(229, 57, 53, 0.25);
+}
+
+.doador-submit:hover {
+  background: linear-gradient(135deg, #8e0000, #c62828);
+  box-shadow: 0 6px 20px rgba(229, 57, 53, 0.35);
+}
+
+.footer-text {
+  text-align: center;
+  margin-top: 20px;
+  font-size: 14px;
+  color: #888;
+}
+
+.footer-text a {
+  color: #2e7d32;
+  font-weight: 600;
+}
+
+.footer-text a:hover {
+  text-decoration: underline;
+}
+
+/* RESPONSIVO */
+@media (max-width: 768px) {
+  .navbar {
+    flex-direction: column;
+    gap: 12px;
+    padding: 12px 4%;
+  }
+
+  nav {
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+  }
+
+  .hero {
+    padding: 70px 16px 60px;
+  }
+
+  .hero h1 {
+    font-size: 28px;
+  }
+
+  .hero p {
+    font-size: 15px;
+  }
+
+  .hero-buttons {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .hero-stats {
+    gap: 20px;
+  }
+
+  .steps-grid {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .schools-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .counters-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .escola-login-container {
+    padding: 20px 12px;
+  }
+
+  .escola-login-card {
+    padding: 30px 22px;
+  }
+}
+
+@media (max-width: 480px) {
+  .counters-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .hero h1 {
+    font-size: 24px;
+  }
+}

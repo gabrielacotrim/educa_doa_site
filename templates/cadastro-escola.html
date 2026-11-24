@@ -1,0 +1,74 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}Cadastro Escola - EducaDoa{% endblock %}
+{% block content %}
+<main class="escola-login-container">
+  <div class="escola-login-card">
+    <div class="escola-card-header">
+      <div class="escola-icon-wrap">
+        <i class="fas fa-school"></i>
+      </div>
+      <h2>Cadastro da Escola</h2>
+      <p>Cadastre sua escola para receber doações e apoio.</p>
+    </div>
+    <form class="escola-form" method="POST">
+      {% csrf_token %}
+      {% if form.errors %}
+      <div style="color: #d9534f; background: #fdf7f7; padding:10px; border-radius:5px; margin-bottom: 15px; font-size:14px;">
+        {% for field in form %}
+          {% for error in field.errors %}
+            <p><strong>{{ field.label }}:</strong> {{ error }}</p>
+          {% endfor %}
+        {% endfor %}
+        {% for error in form.non_field_errors %}
+          <p>{{ error }}</p>
+        {% endfor %}
+      </div>
+      {% endif %}
+      <div class="input-group">
+        <label for="nome-escola">Nome da Escola</label>
+        <div class="input-wrapper">
+          <i class="fas fa-school"></i>
+          <input type="text" id="nome-escola" name="nome" placeholder="Nome completo da escola" required>
+        </div>
+      </div>
+      <div class="input-group">
+        <label for="cnpj-escola">CNPJ</label>
+        <div class="input-wrapper">
+          <i class="fas fa-id-card"></i>
+          <input type="text" id="cnpj-escola" name="cnpj" placeholder="00.000.000/0000-00" required>
+        </div>
+      </div>
+      <div class="input-group">
+        <label for="{{ form.email.id_for_label }}">Email</label>
+        <div class="input-wrapper">
+          <i class="fas fa-envelope"></i>
+          {{ form.email }}
+        </div>
+      </div>
+      <div class="input-group">
+        <label for="id_username">Nome de Usuário (Login)</label>
+        <div class="input-wrapper">
+          <i class="fas fa-at"></i>
+          {{ form.username }}
+        </div>
+      </div>
+      <div class="input-group">
+        <label for="{{ form.senha.id_for_label }}">Senha</label>
+        <div class="input-wrapper">
+          <i class="fas fa-lock"></i>
+          {{ form.senha }}
+        </div>
+      </div>
+
+      <button type="submit" class="btn-escola-submit">
+        <i class="fas fa-paper-plane"></i> Cadastrar Escola
+      </button>
+      <p class="footer-text">
+        Já possui cadastro?
+        <a href="{% url 'login_escola' %}">Faça login</a>
+      </p>
+    </form>
+  </div>
+</main>
+{% endblock %}

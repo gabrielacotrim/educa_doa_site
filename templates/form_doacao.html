@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}Doar - EducaDoa{% endblock %}
+{% block content %}
+<main class="escola-login-container doador-login-container">
+  <div class="escola-login-card">
+    <div class="escola-card-header">
+      <div class="escola-icon-wrap doador-icon-wrap">
+        <i class="fas fa-hand-holding-heart"></i>
+      </div>
+      <h2>Doar para {{ necessidade.escola.nome_escola }}</h2>
+      <p>Campanha: {{ necessidade.titulo }}</p>
+    </div>
+    <form class="escola-form" method="POST">
+      {% csrf_token %}
+      <p style="text-align:center; margin-bottom:20px;">
+        Meta: R$ {{ necessidade.valor_meta }}<br>
+        Arrecadado: R$ {{ necessidade.valor_arrecadado }}
+      </p>
+      <div style="text-align: left; margin-bottom: 20px;">
+        {{ form.as_p }}
+      </div>
+      <button type="submit" class="btn-escola-submit doador-submit">
+        <i class="fas fa-heart"></i> Confirmar Doação
+      </button>
+    </form>
+    <div style="text-align:center; margin-top:15px;">
+      <a href="{% url 'escola_detalhe' necessidade.escola.pk %}">Voltar para Detalhes</a>
+    </div>
+  </div>
+</main>
+{% endblock %}

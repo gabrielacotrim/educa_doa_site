@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}Meu Painel - Doador{% endblock %}
+{% block content %}
+<section class="featured-schools" style="min-height: 70vh;">
+  <h2>Minhas Doações</h2>
+  <div class="schools-grid">
+    {% for doacao in doacoes %}
+    <div class="school-card">
+      <div class="school-card-header">
+        <h3><i class="fas fa-hand-holding-heart"></i> R$ {{ doacao.valor }}</h3>
+      </div>
+      <div class="school-card-body">
+        <p class="school-need">Para: {{ doacao.necessidade.titulo }}</p>
+        <p class="school-location"><i class="fas fa-school"></i> {{ doacao.necessidade.escola.nome_escola }}</p>
+        <p style="font-size: 0.9em; color:#666;">Data: {{ doacao.data_doacao|date:"d/m/Y H:i" }}</p>
+        <a href="{% url 'escola_detalhe' doacao.necessidade.escola.pk %}" class="btn-doar-escola" style="background:#4A90E2; color:#fff;">
+          <i class="fas fa-eye"></i> Ver Campanha
+        </a>
+      </div>
+    </div>
+    {% empty %}
+    <div class="school-card" style="grid-column: span 3; text-align: center;">
+      <p style="padding:40px;">Você ainda não realizou nenhuma doação. Que tal começar a transformar vidas hoje?</p>
+      <a href="{% url 'escolas' %}" class="btn-hero-primary" style="display:inline-block; margin-top:20px;">Explorar Escolas</a>
+    </div>
+    {% endfor %}
+  </div>
+</section>
+{% endblock %}

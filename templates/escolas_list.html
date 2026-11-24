@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}Todas as Escolas - EducaDoa{% endblock %}
+{% block content %}
+<section class="featured-schools" style="min-height: 70vh;">
+  <h2>Escolas Cadastradas</h2>
+  <div class="schools-grid">
+    {% for escola in escolas %}
+    <div class="school-card">
+      <div class="school-card-header">
+        <h3><i class="fas fa-school"></i> {{ escola.nome_escola }}</h3>
+      </div>
+      <div class="school-card-body">
+        <p class="school-location"><i class="fas fa-map-marker-alt"></i> {{ escola.cidade }} - {{ escola.estado }}</p>
+        <p class="school-need">{{ escola.necessidades.count }} campanha(s) registrada(s)</p>
+        <a href="{% url 'escola_detalhe' escola.pk %}" class="btn-doar-escola">
+          <i class="fas fa-eye"></i> Ver Detalhes e Doar
+        </a>
+      </div>
+    </div>
+    {% empty %}
+    <div class="school-card" style="grid-column: span 3; text-align: center;">
+      <p style="padding:40px;">Ainda não há escolas cadastradas na plataforma.</p>
+    </div>
+    {% endfor %}
+  </div>
+</section>
+{% endblock %}

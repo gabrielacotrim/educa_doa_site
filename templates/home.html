@@ -1,0 +1,126 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}EducaDoa - Transforme a Educação com sua Doação{% endblock %}
+{% block content %}
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-content">
+      <h1>Transforme a educação<br>com a sua <span class="highlight">doação</span></h1>
+      <p>
+        Conectamos doadores a escolas públicas que precisam de apoio.
+        Cada contribuição faz diferença na vida de milhares de alunos.
+      </p>
+      <div class="hero-buttons">
+        <a href="{% url 'login_doador' %}" class="btn-hero-primary">
+          <i class="fas fa-heart"></i> Quero Doar
+        </a>
+        <a href="{% url 'login_escola' %}" class="btn-hero-secondary">
+          <i class="fas fa-school"></i> Sou uma Escola
+        </a>
+      </div>
+      <div class="hero-stats">
+        <div>
+          <strong>250+</strong>
+          <p>Escolas</p>
+        </div>
+        <div>
+          <strong>R$ 1.2M</strong>
+          <p>Doações</p>
+        </div>
+        <div>
+          <strong>50K+</strong>
+          <p>Alunos</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- COMO FUNCIONA -->
+  <section class="how-it-works" id="sobre">
+    <h2>Como Funciona</h2>
+    <div class="steps-grid">
+      <div class="step-card">
+        <i class="fas fa-search"></i>
+        <h3>Escolha uma Escola</h3>
+        <p>Veja as escolas cadastradas e suas necessidades.</p>
+      </div>
+      <div class="step-card">
+        <i class="fas fa-hand-holding-heart"></i>
+        <h3>Faça sua Doação</h3>
+        <p>Contribua com dinheiro ou materiais.</p>
+      </div>
+      <div class="step-card">
+        <i class="fas fa-chart-line"></i>
+        <h3>Acompanhe o Impacto</h3>
+        <p>Veja como sua ajuda está transformando vidas.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ESCOLAS EM DESTAQUE -->
+  <section class="featured-schools" id="escolas">
+    <h2>Escolas em Destaque</h2>
+    <div class="schools-grid">
+      {% for escola in escolas %}
+      <div class="school-card">
+        <div class="school-card-header">
+          <h3><i class="fas fa-school"></i> {{ escola.nome_escola }}</h3>
+        </div>
+        <div class="school-card-body">
+          <p class="school-location"><i class="fas fa-map-marker-alt"></i> {{ escola.cidade }} - {{ escola.estado }}</p>
+          {% with necessidade=escola.necessidades.first %}
+            {% if necessidade %}
+              <p class="school-need">{{ necessidade.titulo|truncatechars:50 }}</p>
+              <p class="school-amount"><strong>R$ {{ necessidade.valor_arrecadado }}</strong> arrecadados</p>
+              <div class="progress-bar">
+                <div class="progress-fill" style="width: {{ necessidade.percentual_arrecadado }}%"></div>
+              </div>
+            {% else %}
+              <p class="school-need">Nenhuma campanha ativa no momento.</p>
+            {% endif %}
+          {% endwith %}
+          <a href="{% url 'escola_detalhe' escola.pk %}" class="btn-doar-escola">
+            <i class="fas fa-heart"></i> Ver Campanhas e Doar
+          </a>
+        </div>
+      </div>
+      {% empty %}
+      <div class="school-card">
+        <p style="padding:20px;">Ainda não há escolas cadastradas com necessidades.</p>
+      </div>
+      {% endfor %}
+    </div>
+  </section>
+
+  <!-- IMPACTO -->
+  <section class="impact-section" id="impacto">
+    <h2>Impacto na Educação</h2>
+    <div class="counters-grid">
+      <div>
+        <strong>250</strong>
+        <p>Escolas</p>
+      </div>
+      <div>
+        <strong>4.800</strong>
+        <p>Doações</p>
+      </div>
+      <div>
+        <strong>50.000+</strong>
+        <p>Alunos</p>
+      </div>
+      <div>
+        <strong>3.200</strong>
+        <p>Doadores</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="cta-section">
+    <h2>Pronto para fazer a diferença?</h2>
+    <p>Junte-se a milhares de doadores e transforme vidas através da educação.</p>
+    <a href="{% url 'escolas' %}" class="btn-cta-primary">
+      <i class="fas fa-heart"></i> Começar a Doar
+    </a>
+  </section>
+{% endblock %}

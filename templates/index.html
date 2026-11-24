@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}Login do Doador - EducaDoa{% endblock %}
+{% block content %}
+<main class="escola-login-container doador-login-container">
+  <div class="escola-login-card">
+    <div class="escola-card-header">
+      <div class="escola-icon-wrap doador-icon-wrap">
+        <i class="fas fa-hand-holding-heart"></i>
+      </div>
+      <h2>Área do Doador</h2>
+      <p>Juntos pela Educação: Faça login para transformar vidas!</p>
+    </div>
+    <form class="escola-form" method="POST">
+      {% csrf_token %}
+      <h3>Acesse sua Conta</h3>
+      <p class="subtitle">Seja um transformador hoje!</p>
+      
+      <div class="input-group">
+        <label for="{{ form.email_ou_identificador.id_for_label }}">{{ form.email_ou_identificador.label }}</label>
+        <div class="input-wrapper">
+          <i class="far fa-user"></i>
+          {{ form.email_ou_identificador }}
+        </div>
+      </div>
+      <div class="input-group">
+        <label for="{{ form.senha.id_for_label }}">{{ form.senha.label }}</label>
+        <div class="input-wrapper">
+          <i class="fas fa-lock"></i>
+          {{ form.senha }}
+        </div>
+      </div>
+
+      <button type="submit" class="btn-escola-submit doador-submit">
+        <i class="fas fa-sign-in-alt"></i> Entrar
+      </button>
+
+      <p class="footer-text">
+        Não tem conta?
+        <a href="{% url 'cadastro_doador' %}">Cadastre-se aqui</a>
+      </p>
+    </form>
+  </div>
+</main>
+{% endblock %}

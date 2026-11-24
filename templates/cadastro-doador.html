@@ -1,0 +1,74 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}Cadastro Doador - EducaDoa{% endblock %}
+{% block content %}
+<main class="escola-login-container doador-login-container">
+  <div class="escola-login-card">
+    <div class="escola-card-header">
+      <div class="escola-icon-wrap doador-icon-wrap">
+        <i class="fas fa-user-plus"></i>
+      </div>
+      <h2>Cadastro do Doador</h2>
+      <p>Crie sua conta e ajude a transformar a educação.</p>
+    </div>
+    <form class="escola-form" method="POST">
+      {% csrf_token %}
+      {% if form.errors %}
+      <div style="color: #d9534f; background: #fdf7f7; padding:10px; border-radius:5px; margin-bottom: 15px; font-size:14px;">
+        {% for field in form %}
+          {% for error in field.errors %}
+            <p><strong>{{ field.label }}:</strong> {{ error }}</p>
+          {% endfor %}
+        {% endfor %}
+        {% for error in form.non_field_errors %}
+          <p>{{ error }}</p>
+        {% endfor %}
+      </div>
+      {% endif %}
+      <div class="input-group">
+        <label for="nome-doador">Nome Completo</label>
+        <div class="input-wrapper">
+          <i class="fas fa-user"></i>
+          <input type="text" id="nome-doador" name="nome" placeholder="Seu nome completo" required>
+        </div>
+      </div>
+      <div class="input-group">
+        <label for="cpf-doador">CPF</label>
+        <div class="input-wrapper">
+          <i class="fas fa-id-card"></i>
+          <input type="text" id="cpf-doador" name="cpf" placeholder="000.000.000-00" required>
+        </div>
+      </div>
+      <div class="input-group">
+        <label for="{{ form.email.id_for_label }}">Email</label>
+        <div class="input-wrapper">
+          <i class="fas fa-envelope"></i>
+          {{ form.email }}
+        </div>
+      </div>
+      <div class="input-group">
+        <label for="id_username">Nome de Usuário (Login)</label>
+        <div class="input-wrapper">
+          <i class="fas fa-at"></i>
+          {{ form.username }}
+        </div>
+      </div>
+      <div class="input-group">
+        <label for="{{ form.senha.id_for_label }}">Senha</label>
+        <div class="input-wrapper">
+          <i class="fas fa-lock"></i>
+          {{ form.senha }}
+        </div>
+      </div>
+
+      <button type="submit" class="btn-escola-submit doador-submit">
+        <i class="fas fa-paper-plane"></i> Criar Conta
+      </button>
+      <p class="footer-text">
+        Já tem uma conta?
+        <a href="{% url 'login_doador' %}">Faça login</a>
+      </p>
+    </form>
+  </div>
+</main>
+{% endblock %}

@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}Login Escola - EducaDoa{% endblock %}
+{% block content %}
+<main class="escola-login-container">
+  <div class="escola-login-card">
+    <div class="escola-card-header">
+      <div class="escola-icon-wrap">
+        <i class="fas fa-school"></i>
+      </div>
+      <h2>Área da Escola</h2>
+      <p>Faça login para gerenciar suas doações.</p>
+    </div>
+    <form class="escola-form" method="POST">
+      {% csrf_token %}
+      <h3>Acesse sua Conta</h3>
+      <p class="subtitle">Gerencie suas necessidades.</p>
+      
+      <div class="input-group">
+        <label for="{{ form.email_ou_identificador.id_for_label }}">{{ form.email_ou_identificador.label }}</label>
+        <div class="input-wrapper">
+          <i class="fas fa-envelope"></i>
+          {{ form.email_ou_identificador }}
+        </div>
+      </div>
+      <div class="input-group">
+        <label for="{{ form.senha.id_for_label }}">{{ form.senha.label }}</label>
+        <div class="input-wrapper">
+          <i class="fas fa-lock"></i>
+          {{ form.senha }}
+        </div>
+      </div>
+
+      <button type="submit" class="btn-escola-submit">
+        <i class="fas fa-sign-in-alt"></i> Entrar
+      </button>
+
+      <p class="footer-text">
+        Não possui cadastro?
+        <a href="{% url 'cadastro_escola' %}">Cadastrar Escola</a>
+      </p>
+    </form>
+  </div>
+</main>
+{% endblock %}

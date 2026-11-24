@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}Meu Painel - Escola{% endblock %}
+{% block content %}
+<section class="featured-schools" style="min-height: 70vh;">
+  <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom: 2rem;">
+    <h2>Minhas Campanhas de Necessidade</h2>
+    <a href="{% url 'nova_necessidade' %}" class="btn-hero-primary" style="font-size:16px;">
+      <i class="fas fa-plus"></i> Nova Campanha
+    </a>
+  </div>
+  
+  <div class="schools-grid">
+    {% for necessidade in necessidades %}
+    <div class="school-card">
+      <div class="school-card-header">
+        <h3><i class="fas fa-bullhorn"></i> {{ necessidade.titulo }}</h3>
+      </div>
+      <div class="school-card-body">
+        <p class="school-need" style="height:40px; overflow:hidden;">{{ necessidade.descricao }}</p>
+        <p class="school-amount">
+          Meta: <strong>R$ {{ necessidade.valor_meta }}</strong><br>
+          Arrecadado: <strong>R$ {{ necessidade.valor_arrecadado }}</strong>
+        </p>
+        <div class="progress-bar">
+          <div class="progress-fill" style="width: {{ necessidade.percentual_arrecadado }}%"></div>
+        </div>
+        <p style="font-size: 0.9em; text-align:right;">{{ necessidade.percentual_arrecadado }}%</p>
+        <div style="margin-top:20px; display:flex; gap:10px;">
+          <a href="{% url 'editar_necessidade' necessidade.pk %}" class="btn-escola-submit" style="background:#555; text-align:center; flex:1;">
+            <i class="fas fa-edit"></i> Editar
+          </a>
+        </div>
+      </div>
+    </div>
+    {% empty %}
+    <div class="school-card" style="grid-column: span 3; text-align: center;">
+      <p style="padding:40px;">Sua escola não possui campanhas ativas. Cadastre as necessidades da sua instituição.</p>
+    </div>
+    {% endfor %}
+  </div>
+</section>
+{% endblock %}
